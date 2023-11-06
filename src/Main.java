@@ -46,18 +46,27 @@ public static int numberOfVowels(String str){
      "The_Stealth-Warrior" gets converted to "TheStealthWarrior" **/
 //method camelCaseMe
     public static String camelCaseMe(String str){
-        String result = "";
+
         for(int i = 0; i<str.length()-2; i++){
-            String part = str.substring(i,i+1);
-            if(part.equals("-")){
+            char part = str.charAt(i);
+            if(part==('-') || part==('_')){
                 String front = str.substring(0,i);
                 String middle = str.substring(i+1,i+2).toUpperCase();
                 String back = str.substring(i+2);
 
-                result = front+middle+back;
+                str = front+middle+back;
+
+            }
+
+            char c = str.charAt(str.length()-1);
+
+            if(c=='-' || c=='_'){
+
+                String string = str.substring(0,str.length()-1);
+                str = string;
             }
         }
-        return result;
+        return str;
     }
 
 }
